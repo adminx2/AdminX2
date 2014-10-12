@@ -96,8 +96,8 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label for="userName">Username:</label>
-                                                <input type="email" id="userName" name="userName" class="form-control error" />
+                                                <label for="userName">Username (error class applied by default for demonstration):</label>
+                                                <input type="email" id="userName" name="userName" class="form-control error autofocus" />
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -179,7 +179,7 @@
                                     <a class="icon-btn close-btn" href="#"><i class="fa icon-cancel"></i></a>
                                 </div>
                             </div>
-                            <div class="content" data-refresh="true" data-refresh-speed="5000" data-target="#activeUsers" data-url="/active-users.php">
+                            <div class="content" data-refresh="true" data-refresh-speed="5000" data-autoload="true" data-target="#activeUsers" data-url="/active-users.php">
                                 <h5>Source</h5>
                                 <code>
                                     &lt;div class="content" data-refresh="true" data-refresh-speed="5000" data-refresh-target="#activeUsers" data-url="/active-users.php"&gt;

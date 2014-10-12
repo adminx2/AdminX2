@@ -51,18 +51,14 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
             // during ajax call.
             var baseElem = $(this);
             if (!isNullOrUndefined(reloadUrl) && reloadUrl != '') {
-                $.ajax({
-                    url: reloadUrl,
-                    type: 'get',
-                    success: function(result) {
-                        // Load in the content.
-                        if (isNullOrUndefined(reloadTarget)){
-                            $(baseElem).parent().parent().parent().find('.content').html(result);
-                        } else {
-                            $(reloadTarget).html(result);
-                        }
-                    }
-                })
+                var elem = null;
+                if (isNullOrUndefined(reloadTarget)) {
+                    elem = $(baseElem).parent().parent().parent().find('.content');
+                } else {
+                    elem = $(reloadTarget);
+                }
+
+                loadContent(elem, reloadUrl, true)
             }
         });
 
@@ -84,6 +80,51 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
     }
 
     /**
+     * Finds the first box element as parent.
+     * @returns element
+     */
+    this.findBox = function(baseElem) {
+        var elemParent = baseElem.parent();
+
+        if (elemParent.hasClass('box')) {
+
+            return elemParent;
+        } else {
+            while (!elemParent.hasClass('box') && !isNullOrUndefined(elemParent)) {
+
+                elemParent = elemParent.parent();
+            }
+        }
+        if (elemParent.hasClass('box')) {
+            return elemParent;
+        }
+        return null;
+    }
+
+    /**
+     * Loads content into the designated element from the designated url.
+     * @returns nothing
+     */
+    this.loadContent = function(elem, dataRefreshUrl, loader) {
+        if (loader == true) {
+            var box = findBox(elem);
+            if (box != null) {
+                box.append('<div class="loader"></div>');
+            }
+        }
+        $.ajax({
+            url: dataRefreshUrl,
+            type: 'get',
+            success: function(result) {
+                elem.html(result);
+
+                if (box != null) {
+                    box.find('.loader').remove();
+                }
+            }
+        })
+    }
+    /**
      * Creates timed functions which occur at specific intervals that 
      * automatically refresh data.
      * 
@@ -100,24 +141,24 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
             var dataRefreshTarget = $(this).attr('data-target');
             var dataRefreshSpeed = $(this).attr('data-refresh-speed');
             var dataRefreshUrl = $(this).attr('data-url');
+            var dataAutoLoad = $(this).attr('data-autoload')
             if (!isNullOrUndefined(dataRefreshUrl)) {
                 if (isNullOrUndefined(dataRefreshSpeed)) {
                     dataRefreshSpeed = 5000;
                 }
-                var elem = $(this);
+                var elem = null;
+                if (isNullOrUndefined(dataRefreshTarget)) {
+                    elem = $(this);
+                } else {
+                    elem = $(dataRefreshTarget);
+                }
+
+
+                if (!isNullOrUndefined(dataAutoLoad) && dataAutoLoad == 'true') {
+                    loadContent(elem, dataRefreshUrl, true);
+                }
                 setInterval(function() {
-                    $.ajax({
-                        url: dataRefreshUrl,
-                        type: 'get',
-                        success: function(result){
-                            if (isNullOrUndefined(dataRefreshTarget)) {
-                                elem.html(result);
-                            } else {
-                                $(dataRefreshTarget).html(result);
-                            }
-                        }
-                    })
-                    
+                    loadContent(elem, dataRefreshUrl);
                 }, dataRefreshSpeed)
             }
         });
@@ -165,25 +206,34 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
             }
         })
     }
-    
+
     /**
      * Activetes the correct sidebar-nav link based on the current Url and if 
      * needed expands the sub-menu so it is displayed.
      * 
      * @returns nothing
      */
-    this.setupActiveNavbar = function(){
+    this.setupActiveNavbar = function() {
         $('.sidebar-nav li.active').removeClass('active');
         var curPath = window.location.pathname;
         $('.sidebar-nav li a[href="' + curPath + '"]').parent().addClass('active')
-        $('.sidebar-nav li.active').each(function(){
-            if ($(this).parent().parent().hasClass('collapsable')){
+        $('.sidebar-nav li.active').each(function() {
+            if ($(this).parent().parent().hasClass('collapsable')) {
                 $(this).parent().show();
             }
         })
     }
+    this.setAutofocus = function(){
+        $('.autofocus:first').focus();
+    }
+    
     $(document).ready(function() {
+        
+        // Setup the active navbar item.
         setupActiveNavbar();
+        
+        // Set autofocus if configured in the html
+        setAutofocus();
         // Simply modifies the sidebar visibility and the main-content's
         // left margin.
         $('.sidebar-toggle').click(function() {
@@ -208,7 +258,7 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
 
         // Look for auto refresh div's and setup timers.
         createTimedRefresh();
-        
+
     });
 
 })();
