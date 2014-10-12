@@ -1,0 +1,207 @@
+<html>
+    <head>
+        <title>Admin X2 Dashboard</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/fontello.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/AdminX2.css" />
+
+    </head>
+    <body>
+        <header class="header">
+            <nav class="navbar navbar-fixed-top">
+                <a href="/" class="logo">                
+                    AdminX2
+                </a>
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </nav>
+        </header>
+        <div class="wrapper">
+            <aside class="navigation">
+                <ul class="sidebar-nav">
+                    <li class="active">
+                        <a href="/">
+                            <i class="fa icon-gauge"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ui.html">
+                            <i class="fa icon-box"></i> UI Elements
+                        </a>
+                    </li>
+                    <li class="collapsable">
+                        <a href="/tables.html" role="menu">
+                            <i class="fa icon-table"></i> Tables
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/tables.html">Tables</a>
+                            </li>
+                            <li>
+                                <a href="/datatables.html">DataTables</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="collapsable">
+                        <a href="/forms.html" role="menu">
+                            <i class="fa icon-pencil-squared"></i> Forms
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/forms.html">Basic Forms</a>
+                            </li>
+                            <li>
+                                <a href="/advanced-forms.html">Advanced Form Elements</a>
+                            </li>
+                            <li>
+                                <a href="/wysiwyg.html">WYSIWYG Editors</a>
+                            </li>
+                            <li>
+                                <a href="/wizards.html">Wizards</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/documentation.html">
+                            <i class="fa icon-help-circled"></i> Documentation
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <aside class="main-content">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box">
+                            <div class="header">
+                                <strong>Quick</strong> Sample Form
+                                <div class="toolbar">
+                                    <a class="icon-btn collapse-btn" href="#"><i class="fa icon-down-open-big"></i></a>
+                                    <a class="icon-btn close-btn" href="#"><i class="fa icon-cancel"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+
+                                <form role="form">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="userName">Username:</label>
+                                                <input type="email" id="userName" name="userName" class="form-control error" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="password">Password:</label>
+
+                                                <input type="password" id="password" name="password" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="box">
+                            <div class="header">
+                                <strong>Quick</strong> Details
+                                <div class="toolbar">
+                                    <a class="icon-btn reload-btn icon-faded" title="Demonstrates automatic ajax refresh using data-url attribute." href="#" data-url="home-box.html"><i class="fa icon-ccw-1"></i></a>
+                                    <a class="icon-btn collapse-btn" href="#"><i class="fa icon-down-open-big"></i></a>
+                                    <a class="icon-btn close-btn" href="#"><i class="fa icon-cancel"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h5>What is it?</h5>
+                                <p>
+
+                                    The purpose of AdminX2 or AdminSquared is to develop an admin panel
+                                    which is targeted at applications which desire a smaller footprint
+                                    on some of the general UI. The default Bootstrap elements are
+                                    largely built with heavy padding and margins. AdminX2 changes many
+                                    of these styles to make them smaller overall to make them more 
+                                    functional in smaller spaces.
+                                </p>
+                                <h5>Enhanced Speed/Performance</h5>
+                                <p>
+                                    AdminX2 is built with a minimum of external resources. As an example,
+                                    while AdminX2 does use an icon font it uses a customized version 
+                                    put together from <a href="http://fontello.com/">Fontello</a> which is
+                                    aimed at minimizing the overal size to improve performance. This means 
+                                    you may need to utilize Fontello or a similar service to build an icon
+                                    library for your own project but it also ensures your pages won't force
+                                    more than is needed to be loaded.
+                                </p>
+                                <h5>Ease of Use</h5>
+                                <p>
+                                    Another very important goal with AdminX2 was to make it as easy to
+                                    use as possible. As much as possible it sticks to the core functionality
+                                    found within the Bootstrap library.
+                                </p>
+                                <h5>Ready to Use JS</h5>
+                                <p>
+                                    The javascript is built to be drop in ready. It is configured to use JS
+                                    to enhance various elements and if additional libraries are needed those
+                                    libraries are automatically injected into the JS if not already present
+                                    so there is no need to concern yourself with adding various JS libraries.
+                                </p>
+                                <h5>Currently used JS Libraries</h5>
+                                <ul>
+                                    <li><a href="http://www.jquery.com">jQuery</a></li>
+                                    <li><a href="http://www.getbootstrap.com">Twitter Bootstrap</a></li>
+                                    <li><a href="http://www.datatables.net/">DataTables</a></li>                                    
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="box">
+                            <div class="header">
+                                <strong>Auto</strong> Refresh Data
+                                <div class="toolbar">
+                                    <a class="icon-btn reload-btn icon-faded" title="Demonstrates automatic ajax refresh using data-url attribute." data-target="#activeUsers" href="#" data-url="/active-users.php"><i class="fa icon-ccw-1"></i></a>
+                                    <a class="icon-btn collapse-btn" href="#"><i class="fa icon-down-open-big"></i></a>
+                                    <a class="icon-btn close-btn" href="#"><i class="fa icon-cancel"></i></a>
+                                </div>
+                            </div>
+                            <div class="content" data-refresh="true" data-refresh-speed="5000" data-target="#activeUsers" data-url="/active-users.php">
+                                <h5>Source</h5>
+                                <code>
+                                    &lt;div class="content" data-refresh="true" data-refresh-speed="5000" data-refresh-target="#activeUsers" data-url="/active-users.php"&gt;
+                                    &lt;/div&gt;
+                                </code>
+                                <h5>What is it?</h5>
+                                <p>
+                                    Causes a timed event to be created which automatically reloads the data on a set amount of time. In this case 5,000 MS or 5 seconds. 
+                                    data-refresh-target defines a target to be updated. If no data-refresh-target is supplied then the content class div will be replaced.
+                                </p>
+                                <div id="activeUsers">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/adminx2.js"></script>
+    </body>
+</html>

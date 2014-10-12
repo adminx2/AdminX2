@@ -1,0 +1,495 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+/************************** General Body **************************************/
+body,html,div,a,span,input,input[type=text],select,label,
+h1,h2,h3,h4,h5,h6,h7,p, aside {
+    font-family: 'Open Sans' !important;
+}
+body, html {
+    background: #f9f9f9;
+}
+
+body {
+    padding-top: 60px;
+}
+
+/** Used for moving two columns to the far left **/
+.no-padding-left {
+    padding-left: 0 !important;
+}
+/** Used for moving two columns to the far right **/
+.no-padding-right {
+    padding-right: 0 !important;
+}
+code {
+    width: 100%;
+    display: block;
+    overflow: auto;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #dd95aa;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+pre {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+/************************ End General Body ************************************/
+
+
+
+/**************************** Nav Bar *****************************************/
+
+body .navbar {
+    background-color: hsl(201, 60%, 38%) !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e8abb", endColorstr="#26729b");
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#2e8abb), to(#26729b));
+    background-image: -moz-linear-gradient(top, #2e8abb, #26729b);
+    background-image: -ms-linear-gradient(top, #2e8abb, #26729b);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2e8abb), color-stop(100%, #26729b));
+    background-image: -webkit-linear-gradient(top, #2e8abb, #26729b);
+    background-image: -o-linear-gradient(top, #2e8abb, #26729b);
+    background-image: linear-gradient(#2e8abb, #26729b);
+    border-color: #26729b #26729b hsl(201, 60%, 36%);
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    min-height: 40px;
+}
+
+body .navbar a {
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);    
+}
+
+body .navbar a:hover {
+    text-decoration: none;
+}
+
+.header {
+    padding: 0;
+}
+
+body .navbar a.logo {
+    font-size: 20px;
+    display: block;
+    background: rgba(11,40,83,.2); /* Darken up the side navigation a little */
+    width: 250px;
+    height: 40px;
+    padding: 0 15px;
+    line-height: 40px;
+    font-style: italic;
+    float: left;
+}
+
+body > .header .navbar .sidebar-toggle {
+    float: left;
+    padding: 4px 5px;
+    margin-top: 8px;
+    margin-right: 0;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.navbar .sidebar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+body > .header .navbar .sidebar-toggle .icon-bar + .icon-bar {
+    margin-top: 4px;
+}
+
+.navbar .sidebar-toggle .icon-bar {
+    background: #f6f6f6 !important;
+}
+
+/*************************** End Nav Bar **************************************/
+
+
+
+
+/***************************** Forms ******************************************/
+label {
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: 0 1px 0 #fff;
+    margin: 4px 0;
+}
+input, input[type=text], select, .form-control {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 12px;
+    height: 24px;
+    margin-bottom: 0;
+    padding: 1px 0 1px 6px;
+    border: 1px solid #aaa;
+    font-size: 12px;
+    line-height: 5px;
+    vertical-align: middle;
+    color: #333;
+    letter-spacing: 1.3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25) inset;
+    transition: .125s ease-in border-color;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+input:focus, input[type=text]:focus, select:focus, .form-control:focus {
+    border-color: #4d90fe;
+    border-left-width: 4px;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25) inset !important;
+    padding-left: 3px;
+    outline: 0;
+}
+
+.form-control.error {
+    border-color: #ff0000;    
+}
+
+/*************************** End Forms ****************************************/
+
+
+
+
+/****************** Main Content/Sidebar Positioning **************************/
+aside.navigation {
+    position: fixed;
+    top: 42px;
+    left: 0;
+    bottom: 0;
+    width: 251px; 
+    font-family: 'open sans';
+    text-shadow: 0 1px 0 #fff;
+    font-size: 13px;
+    min-height: 100%;
+    background: #f4f4f4;
+    -webkit-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: inset -3px 0px 8px -4px rgba(0, 0, 0, 0.07);
+}
+
+aside.main-content {
+    margin-left: 270px;
+    margin-right: 20px;
+}
+/***************** End Main Content/Sidebar Positioning ***********************/
+
+
+
+
+/************************** Sidebar Navigation ********************************/
+.sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar-nav li {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav li i.fa {
+    margin-right: 10px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #000;
+    padding: 10px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+}
+
+.sidebar-nav li a i {
+    font-size: 15px;
+}
+
+
+.sidebar-nav li.collapsable ul li a {
+    padding: 10px 16px 10px 50px;
+    border-top: 0;
+    border-bottom: 0;
+    color: #fff;
+    background: transparent;
+    text-shadow: none;    
+}
+
+.sidebar-nav li a:hover, .sidebar-nav li.active a {
+    background: #f9f9f9;
+    text-decoration: none;
+}
+
+.sidebar-nav li.collapsable ul li a:hover, .sidebar-nav li.collapsable ul li.active a {
+    background: rgba(11,40,83, 1);
+}
+
+.sidebar-nav li ul {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    display: none;
+    padding: 0;
+    margin: 0;
+    
+    background: #26729b; 
+}
+
+.sidebar-nav li ul li {
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+.sidebar-nav li.collapsable a {
+    position: relative;   
+}
+
+.sidebar-nav li.collapsable a i.icon-angle {
+    position: absolute;
+    right: 10px;
+    top: 10px;    
+}
+/************************ End Sidebar Navigation ******************************/
+
+
+
+
+/***************************** Box Designs ************************************/
+.box {
+    background: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);    
+    margin-bottom: 20px;
+}
+
+.box .content {
+    padding: 8px 14px 8px 14px;    
+}
+
+.box .header {
+    /*border-bottom: 1px solid #ccc;/*#4d90fe;*/
+    font-size: 14px;
+    font-weight: normal;
+    padding: 8px 14px;
+    margin: 0 0 0 0;
+    position: relative;
+}
+
+.box .header:first-letter {
+    font-weight: bold;
+}
+
+.box .header .toolbar {
+    height: 16px;
+    right: 14px;
+    top: 6px;
+    position: absolute;
+    font-size: 16px;
+}
+
+.box .header .toolbar .icon-btn {
+    width: 16px;
+    font-size: 13px;
+    font-weight: normal !important;
+    height: 16px;
+    margin: 4px 0;
+    
+}
+
+.box .header .icon-btn i.fa {
+    transition: color 0.5s ease;
+    color: #ccc;
+}
+
+.box:hover .header .icon-btn i.fa {
+    color: #ccc;
+}
+
+.box .header .icon-btn i.fa:hover {
+    color: #20539c;
+}
+
+.box .header .icon-btn i.icon-cancel:hover {
+    color: #ff0000;
+}
+
+.box .content h5 {
+    font-size: 13px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.box .content p {
+    font-size: 13px;
+}
+
+/**************************** End Box Designs *********************************/
+
+
+
+/****************************** Data Tables ***********************************/
+.dataTables_length {
+    display: inline-block;
+}
+.dataTables_filter {
+    
+    float: right;
+    display: inline-block;
+}
+.dataTables_wrapper {
+    border: 1px solid #ddd;    
+    position: relative;
+    background: f7f7f7;
+    
+}
+.dataTables_filter label, .dataTables_length label {
+    display: inline-block;
+    padding: 12px;
+}
+.dataTables_wrapper input, .dataTables_wrapper select {
+    margin: 0 10px;
+}
+.dataTables_wrapper input {
+    margin-right: 0;
+}
+
+.dataTables_wrapper table th, .dataTables_wrapper table td {
+    font-size: 12px;
+    padding: 8px 12px 8px 8px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Open Sans', verdana, arial;
+}
+
+.dataTables_wrapper table th {
+    border-bottom: 1px solid #dddddd;
+    padding: 8px 10px;
+}
+
+.dataTables_wrapper th.sorting {
+    cursor: pointer;
+    padding-right: 30px;
+    background: #eee url(../img/sort_both.png)  no-repeat right center;
+}
+
+.dataTables_wrapper th.sorting_asc {
+    background: #eee url(../img/sort_asc.png)  no-repeat right center;
+}
+
+.dataTables_wrapper th.sorting_desc {
+    background: #eee url(../img/sort_desc.png)  no-repeat right center;
+}
+
+.dataTables_wrapper th {
+    background: #eee;
+}
+
+.dataTables_wrapper table.hover tr:hover td {
+    background: #eee;
+}
+.dataTables_wrapper table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-spacing: 2px;
+    background: #fff;
+    border-left: 0;
+    border-right: 0;
+}
+
+.dataTables_wrapper table td:first-child, .dataTables_wrapper table th:first-child {
+    border-left: 0;
+}
+
+.dataTables_wrapper .dataTables_info {
+    display: inline-block;
+    float: left;
+    padding: 15px 10px;
+    font-size: 12px;
+}
+
+.dataTables_wrapper .dataTables_paginate  {
+    display: inline-block;
+    float: right;
+    padding: 8px 10px;
+    font-size: 10px;
+}
+
+/*** Clear to get rid of the floats. ***/
+.dataTables_wrapper:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.paginate_button {
+    font-size: 14px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 5px;
+    margin: 0 0 0 5px;    
+}
+.paginate_button.current {
+    /*background: #eee;*/
+    background: rgba(11,40,83, 1);
+    border: 1px solid rgba(11,40,83, 1);
+    color: #fff;
+}
+.paginate_button:hover {
+    background: #777;
+    color: #fff;
+    text-decoration: none;
+}
+.box.dataTable-Box .content {
+    padding: 0;
+}
+.box.dataTable-Box .dataTables_wrapper, .box.dataTable-Box .dataTables_wrapper table  {
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 0;
+}
+/**************************** End Data Tables *********************************/
+
+
+
+/************************** Responsive Navigation *****************************/
+@media screen and (max-width: 768px) {
+    aside.navigation {
+        display: none;
+        z-index: 1;
+    }
+    
+    aside.main-content {
+        margin-left: 20px;
+    }
+}
+
+/************************ End Responsive Navigation ***************************/
