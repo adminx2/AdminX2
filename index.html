@@ -81,7 +81,22 @@
             <aside class="main-content">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-7">
+                        <div class="box">
+                            <div class="header">
+                                <strong>Daily</strong> Orders
+                                <div class="toolbar">
+                                    <a class="icon-btn collapse-btn" href="#"><i class="fa icon-down-open-big"></i></a>
+                                    <a class="icon-btn close-btn" href="#"><i class="fa icon-cancel"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="morrisChart"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-5">
                         <div class="box">
                             <div class="header">
                                 <strong>Quick</strong> Sample Form
@@ -96,7 +111,7 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label for="userName">Username (error class applied by default for demonstration):</label>
+                                                <label for="userName">Username (error class applied for demo):</label>
                                                 <input type="email" id="userName" name="userName" class="form-control error autofocus" />
                                             </div>
                                         </div>
@@ -113,9 +128,10 @@
                         </div>
 
                     </div>
+                    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="box">
                             <div class="header">
                                 <strong>Quick</strong> Details
@@ -140,7 +156,7 @@
                                 <p>
                                     AdminX2 is built with a minimum of external resources. As an example,
                                     while AdminX2 does use an icon font it uses a customized version 
-                                    put together from <a href="http://fontello.com/">Fontello</a> which is
+                                    put together from <a href="http://fontello.com/" target="_blank">Fontello</a> which is
                                     aimed at minimizing the overal size to improve performance. This means 
                                     you may need to utilize Fontello or a similar service to build an icon
                                     library for your own project but it also ensures your pages won't force
@@ -161,15 +177,15 @@
                                 </p>
                                 <h5>Currently used JS Libraries</h5>
                                 <ul>
-                                    <li><a href="http://www.jquery.com">jQuery</a></li>
-                                    <li><a href="http://www.getbootstrap.com">Twitter Bootstrap</a></li>
-                                    <li><a href="http://www.datatables.net/">DataTables</a></li>                                    
+                                    <li><a target="_blank" href="http://www.jquery.com">jQuery</a></li>
+                                    <li><a target="_blank" href="http://www.getbootstrap.com">Twitter Bootstrap</a></li>
+                                    <li><a target="_blank" href="http://www.datatables.net/">DataTables</a></li>                                    
                                 </ul>
                                 
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="box">
                             <div class="header">
                                 <strong>Auto</strong> Refresh Data
@@ -201,6 +217,8 @@
         </div>
 
         <script src="assets/js/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="/assets/plugins/morris/morris.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/adminx2.js"></script>
     </body>

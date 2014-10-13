@@ -1,4 +1,11 @@
+// Requirements for displaying dataTables
 var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
+
+// Requirements for displaying a morris chart.
+var morrisRequirements = [
+    "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js",
+    "/assets/plugins/morris/morris.js"
+];
 (function() {
     /**
      * Verifies if a script is added and if not injects it into the page.
@@ -10,7 +17,14 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
      */
     this.addScript = function(src, test) {
         if (isNullOrUndefined(test)) {
-            $('body').append('<script src="' + src + '"></script>');
+            if (typeof src === 'string') {
+                $('head').append('<script src="' + src + '"></script>');
+            } else {
+                // Means an array is being passed.
+                for (i = 0; i < src.length; i++) {
+                    $('head').append('<script src="' + src[i] + '"></script>');
+                }
+            }
         }
     }
 
@@ -40,6 +54,7 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
         $('.box .close-btn').click(function() {
             event.preventDefault();
             $(this).parent().parent().slideUp('fast', function() {
+
                 $(this).parent().parent().remove();
             });
         });
@@ -223,15 +238,49 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
             }
         })
     }
-    this.setAutofocus = function(){
+
+    this.createMorrisChart = function() {
+        var year_data = [
+            {"period": "2014-10-01", "orders": 37, "earned": 1437, "gp": 874},
+            {"period": "2014-10-02", "orders": 37, "earned": 1649, "gp": 987},
+            {"period": "2014-10-03", "orders": 37, "earned": 1134, "gp": 645},
+            {"period": "2014-10-04", "orders": 37, "earned": 1534, "gp": 1234},
+            {"period": "2014-10-05", "orders": 37, "earned": 2123, "gp": 1119},
+            {"period": "2014-10-06", "orders": 37, "earned": 2243, "gp": 1874},
+            {"period": "2014-10-07", "orders": 37, "earned": 2563, "gp": 2394},
+            {"period": "2014-10-08", "orders": 37, "earned": 1677, "gp": 1493},
+            {"period": "2014-10-09", "orders": 37, "earned": 1912, "gp": 1837},
+            {"period": "2014-10-10", "orders": 37, "earned": 1557, "gp": 1443},
+            {"period": "2014-10-11", "orders": 37, "earned": 1298, "gp": 1132},
+            {"period": "2014-10-12", "orders": 37, "earned": 1555, "gp": 804}
+
+        ];
+        
+        if ($('.morrisChart').length) {
+            addScript(morrisRequirements, Morris);
+            
+            $('.morrisChart').each(function() {
+                var elem = $(this);
+                    Morris.Line({
+                        element: elem,
+                        data: year_data,
+                        xkey: 'period',
+                        ykeys: ['orders', 'earned', 'gp'],
+                        labels: ['Sales', 'Revenue', 'Gross Profit']
+                    });
+            });
+        }
+    }
+
+    this.setAutofocus = function() {
         $('.autofocus:first').focus();
     }
-    
+
     $(document).ready(function() {
-        
+
         // Setup the active navbar item.
         setupActiveNavbar();
-        
+
         // Set autofocus if configured in the html
         setAutofocus();
         // Simply modifies the sidebar visibility and the main-content's
@@ -255,6 +304,9 @@ var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
 
         // Setup datatables if there are any.
         createDataTables();
+
+        // Setup any morrisCharts
+        createMorrisChart();
 
         // Look for auto refresh div's and setup timers.
         createTimedRefresh();
