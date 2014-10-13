@@ -1,0 +1,14 @@
+[
+            {"period": "2014-10-01", "pageviews": 1234, "visitors": 631},
+            {"period": "2014-10-02", "pageviews": 1493, "visitors": 309},
+            {"period": "2014-10-03", "pageviews": 1433, "visitors": 834},
+            {"period": "2014-10-04", "pageviews": 1988, "visitors": 503},
+            {"period": "2014-10-05", "pageviews": 2094, "visitors": 603},
+            {"period": "2014-10-06", "pageviews": 1407, "visitors": 934},
+            {"period": "2014-10-07", "pageviews": 1193, "visitors": 394},
+            {"period": "2014-10-08", "pageviews": 1583, "visitors": 563},
+            {"period": "2014-10-09", "pageviews": 2234, "visitors": 583},
+            {"period": "2014-10-10", "pageviews": 2294, "visitors": 683},
+            {"period": "2014-10-11", "pageviews": 1434, "visitors": 934},
+            {"period": "2014-10-12", "pageviews": 3049, "visitors": 1534}
+]

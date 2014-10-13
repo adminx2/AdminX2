@@ -1,15 +1,14 @@
 [
-    {"period": "2014-10-01", "orders": 37, "earned", 1437},
-    {"period": "2014-10-02", "orders": 37, "earned", 1649},
-    {"period": "2014-10-03", "orders": 37, "earned", 1134},
-    {"period": "2014-10-04", "orders": 37, "earned", 1534},
-    {"period": "2014-10-05", "orders": 37, "earned", 2123},
-    {"period": "2014-10-06", "orders": 37, "earned", 2243},
-    {"period": "2014-10-07", "orders": 37, "earned", 2563},
-    {"period": "2014-10-08", "orders": 37, "earned", 1677},
-    {"period": "2014-10-09", "orders": 37, "earned", 1912},
-    {"period": "2014-10-10", "orders": 37, "earned", 1557},
-    {"period": "2014-10-11", "orders": 37, "earned", 1298},
-    {"period": "2014-10-12", "orders": 37, "earned", 1555}
-    
+            {"period": "2014-10-01", "orders": 37, "earned": 1437, "gp": 874},
+            {"period": "2014-10-02", "orders": 37, "earned": 1649, "gp": 987},
+            {"period": "2014-10-03", "orders": 37, "earned": 1134, "gp": 645},
+            {"period": "2014-10-04", "orders": 37, "earned": 1534, "gp": 1234},
+            {"period": "2014-10-05", "orders": 37, "earned": 2123, "gp": 1119},
+            {"period": "2014-10-06", "orders": 37, "earned": 2243, "gp": 1874},
+            {"period": "2014-10-07", "orders": 37, "earned": 2563, "gp": 2394},
+            {"period": "2014-10-08", "orders": 37, "earned": 1677, "gp": 1493},
+            {"period": "2014-10-09", "orders": 37, "earned": 1912, "gp": 1837},
+            {"period": "2014-10-10", "orders": 37, "earned": 1557, "gp": 1443},
+            {"period": "2014-10-11", "orders": 37, "earned": 1298, "gp": 1132},
+            {"period": "2014-10-12", "orders": 37, "earned": 1555, "gp": 804}
 ]

@@ -1,12 +1,19 @@
 // Requirements for displaying dataTables
 var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
-
 // Requirements for displaying a morris chart.
 var morrisRequirements = [
     "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js",
     "/assets/plugins/morris/morris.js"
 ];
 (function() {
+    window.charts = new Array();
+    this.loadScript = function(src) {
+        $.ajax({
+            url: src,
+            async: false,
+            dataType: "script"
+        });
+    }
     /**
      * Verifies if a script is added and if not injects it into the page.
      * Allows libraries to be automatically loaded in where necessary.
@@ -16,13 +23,16 @@ var morrisRequirements = [
      * @returns nothing
      */
     this.addScript = function(src, test) {
-        if (isNullOrUndefined(test)) {
+        if ((typeof test == 'function') == false) {
             if (typeof src === 'string') {
-                $('head').append('<script src="' + src + '"></script>');
+
+                //$('head').append('<script src="' + src + '"></script>');
+                loadScript(src)
             } else {
                 // Means an array is being passed.
                 for (i = 0; i < src.length; i++) {
-                    $('head').append('<script src="' + src[i] + '"></script>');
+                    loadScript(src[i]);
+                    //$('head').append('<script src="' + src[i] + '"></script>');
                 }
             }
         }
@@ -76,7 +86,6 @@ var morrisRequirements = [
                 loadContent(elem, reloadUrl, true)
             }
         });
-
         $('.box .collapse-btn').click(function() {
             var baseElem = $(this).find('.fa');
             var elem = $(this).parent().parent().parent().find('.content');
@@ -100,7 +109,6 @@ var morrisRequirements = [
      */
     this.findBox = function(baseElem) {
         var elemParent = baseElem.parent();
-
         if (elemParent.hasClass('box')) {
 
             return elemParent;
@@ -130,9 +138,9 @@ var morrisRequirements = [
         $.ajax({
             url: dataRefreshUrl,
             type: 'get',
+            timeout: 4000,
             success: function(result) {
                 elem.html(result);
-
                 if (box != null) {
                     box.find('.loader').remove();
                 }
@@ -177,14 +185,12 @@ var morrisRequirements = [
                 }, dataRefreshSpeed)
             }
         });
-
     }
 
     this.createDataTables = function() {
         if ($('.dataTable').length) {
             // add in the datatables script if it's not already loaded in.
             addScript(dataTablesPath, $.fn.DataTable);
-
             var options = {
                 "bPaginate": (!$(this).hasClass('noPaginate')),
                 "bLengthChange": (!$(this).hasClass('noLengthChange')),
@@ -201,17 +207,16 @@ var morrisRequirements = [
                         options.aoColumns.push(null);
                     }
                 });
-
                 $(this).DataTable(options);
             });
         }
     }
 
     this.setupSideNav = function() {
-        $('.sidebar-nav li.collapsable a[role="menu"]').each(function() {
+        $('.sidebar-nav li.collapsable a[data-role="menu"]').each(function() {
             $(this).append('<i class="icon-angle icon-angle-down"></i>')
         });
-        $('.sidebar-nav li.collapsable a[role="menu"]').click(function() {
+        $('.sidebar-nav li.collapsable a[data-role="menu"]').click(function() {
             event.preventDefault();
             if ($(this).parent().find('ul:first').is(':visible')) {
                 $(this).parent().find('ul:first').slideUp('fast');
@@ -239,6 +244,64 @@ var morrisRequirements = [
         })
     }
 
+    /**
+     * Generates a morris chart from an element using data-* fields.
+     * The fields required are:
+     * data-xkey,data-ykeys,data-labels,data-url, and data-type
+     * @returns nothing
+     */
+    this.generateMorrisChart = function(elem) {
+
+        // Several data- fields are required
+        var xKey = elem.attr('data-xkey');
+        var dYKeys = elem.attr('data-ykeys');
+        var dLabels = elem.attr('data-labels');
+        var url = elem.attr('data-url');
+        var dType = elem.attr('data-type');
+
+        if (isNullOrUndefined(xKey) || isNullOrUndefined(dYKeys) ||
+                isNullOrUndefined(dLabels) || isNullOrUndefined(url) ||
+                isNullOrUndefined(dType)) {
+
+            return;
+        }
+        dType = dType.toLowerCase();
+        // Build out arrays for the labels and ykeys by splitting on
+        // comma.
+        var labels = dLabels.split(',');
+        var yKeys = dYKeys.split(',');
+
+
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            success: function(result) {
+                if (dType == 'line') {
+                    var chart = Morris.Line({
+                        element: elem,
+                        data: result,
+                        resize: true,
+                        xkey: xKey,
+                        ykeys: yKeys,
+                        labels: labels
+                    });
+                }
+                else if (dType == 'bar') {
+                    var chart = Morris.Bar({
+                        element: elem,
+                        data: result,
+                        resize: true,
+                        xkey: xKey,
+                        ykeys: yKeys,
+                        labels: labels
+                    });
+                }
+                window.charts.push(chart);
+            }
+        });
+    }
+
     this.createMorrisChart = function() {
         var year_data = [
             {"period": "2014-10-01", "orders": 37, "earned": 1437, "gp": 874},
@@ -255,22 +318,14 @@ var morrisRequirements = [
             {"period": "2014-10-12", "orders": 37, "earned": 1555, "gp": 804}
 
         ];
-        
         if ($('.morrisChart').length) {
             addScript(morrisRequirements, Morris);
-            
             $('.morrisChart').each(function() {
-                var elem = $(this);
-                    Morris.Line({
-                        element: elem,
-                        data: year_data,
-                        xkey: 'period',
-                        ykeys: ['orders', 'earned', 'gp'],
-                        labels: ['Sales', 'Revenue', 'Gross Profit']
-                    });
+                generateMorrisChart($(this));
             });
         }
     }
+
 
     this.setAutofocus = function() {
         $('.autofocus:first').focus();
@@ -280,7 +335,6 @@ var morrisRequirements = [
 
         // Setup the active navbar item.
         setupActiveNavbar();
-
         // Set autofocus if configured in the html
         setAutofocus();
         // Simply modifies the sidebar visibility and the main-content's
@@ -295,22 +349,16 @@ var morrisRequirements = [
             }
 
         });
-
+        
         // Setup the side navigation collapsable links
         setupSideNav();
-
         // Setup the UI Buttons to do what they are supposed to do.
         configureUiButtons();
-
         // Setup datatables if there are any.
         createDataTables();
-
         // Setup any morrisCharts
         createMorrisChart();
-
         // Look for auto refresh div's and setup timers.
         createTimedRefresh();
-
     });
-
 })();

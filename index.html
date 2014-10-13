@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Admin X2 Dashboard</title>
         <meta charset="utf-8">
@@ -23,6 +24,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+                <ul class="nav pull-right">
+                    <li><a href="#" id="viewRss"><i class="fa icon-left-open-big"></i></a></li>
+                </ul>
             </nav>
         </header>
         <div class="wrapper">
@@ -39,7 +43,7 @@
                         </a>
                     </li>
                     <li class="collapsable">
-                        <a href="/tables.html" role="menu">
+                        <a href="/tables.html" data-role="menu">
                             <i class="fa icon-table"></i> Tables
                         </a>
                         <ul>
@@ -53,7 +57,7 @@
                         </ul>
                     </li>
                     <li class="collapsable">
-                        <a href="/forms.html" role="menu">
+                        <a href="/forms.html" data-role="menu">
                             <i class="fa icon-pencil-squared"></i> Forms
                         </a>
                         <ul>
@@ -81,7 +85,7 @@
             <aside class="main-content">
 
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <div class="box">
                             <div class="header">
                                 <strong>Daily</strong> Orders
@@ -91,12 +95,29 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <div class="morrisChart"></div>
+                                <div class="morrisChart" data-type="line" data-xkey="period" data-ykeys="orders,earned,gp" data-labels="Sales,Revenue,Gross Profit" data-url="/generic-order-data.json"></div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
+                        <div class="box">
+                            <div class="header">
+                                <strong>Daily</strong> Visitor Tracking
+                                <div class="toolbar">
+                                    <a class="icon-btn collapse-btn" href="#"><i class="fa icon-down-open-big"></i></a>
+                                    <a class="icon-btn close-btn" href="#"><i class="fa icon-cancel"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="morrisChart" data-type="bar" data-xkey="period" data-ykeys="pageviews,visitors" data-labels="Page Views,Unique Visitors" data-url="/generic-visitors-data.json"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
                         <div class="box">
                             <div class="header">
                                 <strong>Quick</strong> Sample Form
@@ -128,10 +149,10 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <div class="box">
                             <div class="header">
                                 <strong>Quick</strong> Details
@@ -181,11 +202,11 @@
                                     <li><a target="_blank" href="http://www.getbootstrap.com">Twitter Bootstrap</a></li>
                                     <li><a target="_blank" href="http://www.datatables.net/">DataTables</a></li>                                    
                                 </ul>
-                                
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <div class="box">
                             <div class="header">
                                 <strong>Auto</strong> Refresh Data
@@ -208,7 +229,7 @@
                                 </p>
                                 <div id="activeUsers">
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

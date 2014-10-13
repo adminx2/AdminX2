@@ -69,6 +69,7 @@ body .navbar a {
 
 body .navbar a:hover {
     text-decoration: none;
+    background: rgba(11,40,83, 1);
 }
 
 .header {
