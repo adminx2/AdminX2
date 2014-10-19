@@ -88,6 +88,15 @@ body .navbar a.logo {
     float: left;
 }
 
+.nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+}
+
 body > .header .navbar .sidebar-toggle {
     float: left;
     padding: 4px 5px;
@@ -132,6 +141,20 @@ label {
     text-shadow: 0 1px 0 #fff;
     margin: 4px 0;
 }
+.form-control {
+    border-radius: 0;
+    padding: 1px 0 1px 6px;
+    font-family: 'open sans', verdana, arial, sans-serif;
+    font-size: 12px;
+    
+}
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
+    border-radius: 0;
+}
+.input-group-addon {
+    padding: 4px 10px;
+    border-radius: 0;
+}
 input, input[type=text], select, .form-control {
     box-sizing: border-box;
     max-width: 100%;
@@ -141,7 +164,7 @@ input, input[type=text], select, .form-control {
     padding: 1px 0 1px 6px;
     border: 1px solid #aaa;
     font-size: 12px;
-    line-height: 5px;
+    margin: 0 0 15px 0;
     vertical-align: middle;
     color: #333;
     letter-spacing: 1.3px;
@@ -150,6 +173,37 @@ input, input[type=text], select, .form-control {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
+}
+
+input[type=checkbox], input[type=submit], input[type=radio],
+input[type=checkbox]:focus, input[type=submit]:focus, input[type=radio]:focus,
+input[type=checkbox]:active, input[type=submit]:active, input[type=radio]:active{
+    box-shadow: none !important;
+    margin: 0 !important;
+    height: auto !important;
+}
+
+.form-control.input-lg {
+    height: 42px;
+    font-size: 20px;
+}
+
+.form-control.input-sm {
+    height: 18px;
+    font-size: 10px;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+  line-height: 1.5em;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  line-height: 1.5em;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  line-height: 1.5em;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  line-height: 1.5em;
 }
 
 input:focus, input[type=text]:focus, select:focus, .form-control:focus {
@@ -164,7 +218,22 @@ input:focus, input[type=text]:focus, select:focus, .form-control:focus {
 }
 
 .form-control.error {
-    border-color: #ff0000;    
+    border-color: #ff0000 !important;    
+}
+
+.form-control.success {
+    border-color: #007200 !important;
+}
+
+.form-control.warning {
+    border-color: #f39c12 !important;
+}
+
+.form-buttons {
+    margin: 20px -15px 0 -15px;
+    border-top: 1px solid #eee;
+    padding: 15px 15px 5px 15px;
+    text-align: right;    
 }
 
 /*************************** End Forms ****************************************/
@@ -507,6 +576,36 @@ aside.main-content {
 
     aside.main-content {
         margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    body .navbar a.logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: auto;
+        right: 34px;
+        display: block;
+        clear: both;
+    }
+    
+    body .navbar .sidebar-toggle {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    body .navbar {
+        position: absolute;
+        height: 80px;
+    }
+    
+    body .navbar .top-nav {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
     }
 }
 

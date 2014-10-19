@@ -2,9 +2,10 @@
 var dataTablesPath = "/assets/plugins/datatables/jquery.dataTables.min.js";
 // Requirements for displaying a morris chart.
 var morrisRequirements = [
-    "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js",
+    "/assets/plugins/morris/raphael-min.js",
     "/assets/plugins/morris/morris.js"
 ];
+var ckEditorRequirements = '/assets/plugins/ckeditor/ckeditor.js';
 (function() {
     window.charts = new Array();
     this.loadScript = function(src) {
@@ -13,6 +14,13 @@ var morrisRequirements = [
             async: false,
             dataType: "script"
         });
+    }
+    this.insertScript = function(src) {
+        var script = document.createElement('script');
+
+        script.async = false;
+        script.src = src;
+        document.getElementsByTagName('head')[0].appendChild(script);
     }
     /**
      * Verifies if a script is added and if not injects it into the page.
@@ -23,20 +31,28 @@ var morrisRequirements = [
      * @returns nothing
      */
     this.addScript = function(src, test) {
-        if ((typeof test == 'function') == false) {
+        var scriptExists = false;
+        if (typeof test == 'function'){
+            scriptExists = true;
+        }
+        // jQuery function to use jqueries check
+        
+        //if ((typeof test == 'function') == false || isNullOrUndefined(test)) {
+        if (!$.isFunction(test))
             if (typeof src === 'string') {
 
-                //$('head').append('<script src="' + src + '"></script>');
-                loadScript(src)
+                $('head').append('<script src="' + src + '"></script>');
+                //insertScript(src);
+                //loadScript(src)
             } else {
                 // Means an array is being passed.
                 for (i = 0; i < src.length; i++) {
-                    loadScript(src[i]);
-                    //$('head').append('<script src="' + src[i] + '"></script>');
+                    //insertScript(src[i]);
+                    $('head').append('<script src="' + src[i] + '"></script>');
                 }
             }
         }
-    }
+    
 
     /**
      * Returns true if the object is null or undefined. Just serves as a 
@@ -147,6 +163,17 @@ var morrisRequirements = [
             }
         })
     }
+
+    /**
+     * Turns textareas with ckeditor class into ckeditors
+     * @returns nothing
+     */
+    this.createCKEditor = function() {
+        if ($('.ckeditor').length) {
+            addScript(ckEditorRequirements, 'CKEditor')
+        }
+    }
+
     /**
      * Creates timed functions which occur at specific intervals that 
      * automatically refresh data.
@@ -190,7 +217,7 @@ var morrisRequirements = [
     this.createDataTables = function() {
         if ($('.dataTable').length) {
             // add in the datatables script if it's not already loaded in.
-            addScript(dataTablesPath, $.fn.DataTable);
+            addScript(dataTablesPath,'DataTable');
             var options = {
                 "bPaginate": (!$(this).hasClass('noPaginate')),
                 "bLengthChange": (!$(this).hasClass('noLengthChange')),
@@ -240,6 +267,7 @@ var morrisRequirements = [
         $('.sidebar-nav li.active').each(function() {
             if ($(this).parent().parent().hasClass('collapsable')) {
                 $(this).parent().show();
+                $(this).parent().parent().addClass('active');
             }
         })
     }
@@ -303,23 +331,8 @@ var morrisRequirements = [
     }
 
     this.createMorrisChart = function() {
-        var year_data = [
-            {"period": "2014-10-01", "orders": 37, "earned": 1437, "gp": 874},
-            {"period": "2014-10-02", "orders": 37, "earned": 1649, "gp": 987},
-            {"period": "2014-10-03", "orders": 37, "earned": 1134, "gp": 645},
-            {"period": "2014-10-04", "orders": 37, "earned": 1534, "gp": 1234},
-            {"period": "2014-10-05", "orders": 37, "earned": 2123, "gp": 1119},
-            {"period": "2014-10-06", "orders": 37, "earned": 2243, "gp": 1874},
-            {"period": "2014-10-07", "orders": 37, "earned": 2563, "gp": 2394},
-            {"period": "2014-10-08", "orders": 37, "earned": 1677, "gp": 1493},
-            {"period": "2014-10-09", "orders": 37, "earned": 1912, "gp": 1837},
-            {"period": "2014-10-10", "orders": 37, "earned": 1557, "gp": 1443},
-            {"period": "2014-10-11", "orders": 37, "earned": 1298, "gp": 1132},
-            {"period": "2014-10-12", "orders": 37, "earned": 1555, "gp": 804}
-
-        ];
         if ($('.morrisChart').length) {
-            addScript(morrisRequirements, Morris);
+            addScript(morrisRequirements, 'Morris');
             $('.morrisChart').each(function() {
                 generateMorrisChart($(this));
             });
@@ -329,6 +342,23 @@ var morrisRequirements = [
 
     this.setAutofocus = function() {
         $('.autofocus:first').focus();
+    }
+    
+    this.setupScrollBox = function(){        
+        $('.scrollBox').each(function(){
+            var nHeight = $(this).attr('data-height');
+            var nWidth = $(this).attr('data-width');
+            if (isNullOrUndefined(nHeight)){
+                nHeight = '250px';
+            }
+            if (isNullOrUndefined(nWidth)){
+                nWidth = 'auto';
+            }
+            $(this).slimScroll({
+                width: nWidth,
+                height: nHeight
+            })
+        })
     }
 
     $(document).ready(function() {
@@ -350,6 +380,10 @@ var morrisRequirements = [
 
         });
         
+        setupScrollBox();
+
+        createCKEditor();
+
         // Setup the side navigation collapsable links
         setupSideNav();
         // Setup the UI Buttons to do what they are supposed to do.

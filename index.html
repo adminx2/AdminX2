@@ -24,63 +24,66 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <ul class="nav pull-right">
+                <ul class="top-nav nav navbar-nav pull-right top-nav">
+                    <li><a href="#" id="viewRss"><i class="fa icon-user"></i></a></li>
                     <li><a href="#" id="viewRss"><i class="fa icon-left-open-big"></i></a></li>
                 </ul>
             </nav>
         </header>
         <div class="wrapper">
             <aside class="navigation">
-                <ul class="sidebar-nav">
-                    <li class="active">
-                        <a href="/">
-                            <i class="fa icon-gauge"></i> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/ui.html">
-                            <i class="fa icon-box"></i> UI Elements
-                        </a>
-                    </li>
-                    <li class="collapsable">
-                        <a href="/tables.html" data-role="menu">
-                            <i class="fa icon-table"></i> Tables
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="/tables.html">Tables</a>
-                            </li>
-                            <li>
-                                <a href="/datatables.html">DataTables</a>
-                            </li>
+                <div class="scrollBox" data-height="auto">
+                    <ul class="sidebar-nav">
+                        <li class="active">
+                            <a href="/">
+                                <i class="fa icon-gauge"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ui.html">
+                                <i class="fa icon-box"></i> UI Elements
+                            </a>
+                        </li>
+                        <li class="collapsable">
+                            <a href="/tables.html" data-role="menu">
+                                <i class="fa icon-table"></i> Tables
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="/tables.html">Tables</a>
+                                </li>
+                                <li>
+                                    <a href="/datatables.html">DataTables</a>
+                                </li>
 
-                        </ul>
-                    </li>
-                    <li class="collapsable">
-                        <a href="/forms.html" data-role="menu">
-                            <i class="fa icon-pencil-squared"></i> Forms
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="/forms.html">Basic Forms</a>
-                            </li>
-                            <li>
-                                <a href="/advanced-forms.html">Advanced Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="/wysiwyg.html">WYSIWYG Editors</a>
-                            </li>
-                            <li>
-                                <a href="/wizards.html">Wizards</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/documentation.html">
-                            <i class="fa icon-help-circled"></i> Documentation
-                        </a>
-                    </li>
-                </ul>
+                            </ul>
+                        </li>
+                        <li class="collapsable">
+                            <a href="/forms.html" data-role="menu">
+                                <i class="fa icon-pencil-squared"></i> Forms
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="/forms.html">Basic Forms</a>
+                                </li>
+                                <li>
+                                    <a href="/advanced-forms.html">Advanced Form Elements</a>
+                                </li>
+                                <li>
+                                    <a href="/wysiwyg.html">WYSIWYG Editors</a>
+                                </li>
+                                <li>
+                                    <a href="/wizards.html">Wizards</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/documentation.html">
+                                <i class="fa icon-help-circled"></i> Documentation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </aside>
             <aside class="main-content">
 
@@ -142,6 +145,11 @@
 
                                                 <input type="password" id="password" name="password" class="form-control" />
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <textarea class="ckeditor" name="testCKEditor" rows="10" cols="100"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -238,8 +246,8 @@
         </div>
 
         <script src="assets/js/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="/assets/plugins/morris/morris.js"></script>
+        <script src="assets/js/jquery.slimscroll.min.js"></script>
+        
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/adminx2.js"></script>
     </body>
